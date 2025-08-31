@@ -1,0 +1,13 @@
+Run backend container locally:
+docker run --name backend --rm -p 8000:8000 backend
+
+Run and shut down services locally via docker compose:
+docker compose up
+docker compose down
+
+Kill postgres if already running:
+sudo lsof -i :5432
+sudo kill **PID**
+
+Start up dev server locally:
+fastapi dev main.py
