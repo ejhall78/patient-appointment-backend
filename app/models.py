@@ -1,8 +1,17 @@
+import datetime
 from sqlmodel import SQLModel, Field
 
-class Patient(SQLModel, table=True):
-    id: int | None = Field(default=None, primary_key=True)
-    nhs_number: int
+class PatientBase(SQLModel):
+    nhs_number: str = Field(index=True)
     name: str
-    date_of_birth: str
+    date_of_birth: datetime.date
     postcode: str
+
+class Patient(PatientBase, table=True):
+    id: int | None = Field(default=None, primary_key=True)
+
+class PatientPublic(PatientBase):
+    pass
+
+class PatientCreate(PatientBase):
+    pass

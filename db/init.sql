@@ -6,5 +6,7 @@ CREATE TABLE IF NOT EXISTS patient (
     postcode VARCHAR(8) NOT NULL
 );
 
+CREATE INDEX ix_nhs_number on patient(nhs_number);
+
 -- INSERT INTO patient (nhs_number, name, date_of_birth, postcode)
 -- VALUES ('1373645350', 'Dr Glenn Clark', '1996-02-01', 'N6 2FA');

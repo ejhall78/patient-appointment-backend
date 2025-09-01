@@ -1,6 +1,14 @@
-{
-  "nhs_number": "1373645350",
-  "name": "Dr Glenn Clark",
-  "date_of_birth": "1996-02-01",
-  "postcode": "N6 2FA"
-}
+[
+  {
+    "nhs_number": "1373645350",
+    "name": "Dr Glenn Clark",
+    "date_of_birth": "1996-02-01",
+    "postcode": "N6 2FA"
+  },
+  {
+    "nhs_number": "1953262716",
+    "name": "Dr Ian Hall",
+    "date_of_birth": "1963-08-27",
+    "postcode": "WA55 8HE"
+  }
+]
