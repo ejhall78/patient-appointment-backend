@@ -15,3 +15,12 @@ class PatientPublic(PatientBase):
 
 class PatientCreate(PatientBase):
     pass
+
+class PatientUpdate(PatientBase):
+    name: str | None = None
+    date_of_birth: datetime.date | None = None
+    postcode: str | None = None
+
+# Generic message
+class Message(SQLModel):
+    message: str
