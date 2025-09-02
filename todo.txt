@@ -1,13 +1,14 @@
-Impl Routes
-Impl CRUD
-Environment variables
-NHS Number checksum
-API Docs
 Tests
+NHS Number checksum
+Postcode validation
+API Docs
 README
 
 Done:
-Update models
+Environment variables
+Impl Patient Routes
+Impl Patient CRUD
+Update Patient models
 Routes setup
 CRUD setup
 core/db setup
