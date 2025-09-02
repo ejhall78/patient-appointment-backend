@@ -1,10 +1,12 @@
-Tests
+Impl Routes Tests
+Impl CRUD Tests
 NHS Number checksum
 Postcode validation
 API Docs
 README
 
 Done:
+Tests setup
 Environment variables
 Impl Patient Routes
 Impl Patient CRUD

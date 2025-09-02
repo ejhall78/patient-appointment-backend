@@ -1,4 +1,5 @@
 from fastapi import APIRouter, HTTPException
+import datetime
 from app import crud, models
 
 router = APIRouter(prefix="/patients", tags=["patients"])
@@ -67,3 +68,26 @@ async def delete_patient(nhs_number):
         )
     
     return res
+
+# TODO: refactor. This is a very rudimentary integration test.
+# An end-to-end test involving the frontend would be more valuable
+@router.post("/intergration-test", response_model=models.Message)
+async def run_integration_test(patient: models.PatientCreate):
+    '''
+    Run a full CRUD integration test.
+    '''
+
+    created_patient = await create_patient(patient=patient)
+    fetched_patient = await get_patient(created_patient.nhs_number)
+    await update_patient(models.PatientUpdate(
+        nhs_number=fetched_patient.nhs_number,
+        name="Updated Name",
+        date_of_birth=datetime.date(2000, 1, 1),
+        postcode="N1 1AA"
+    ))
+    successfully_deleted = await delete_patient(patient.nhs_number)
+
+    if successfully_deleted.message != "Patient deleted successfully.":
+        return models.Message(message="FAIL - Patient integration test unsuccessful.")
+
+    return models.Message(message="PASS - Patient integration test successful.")
