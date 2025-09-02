@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException
 import datetime
 from app import crud, models
+from ...utils import postcode
 
 router = APIRouter(prefix="/patients", tags=["patients"])
 
@@ -29,6 +30,14 @@ async def create_patient(patient: models.PatientCreate):
     Create a new patient.
     '''
 
+    if not postcode.valid_postcode(patient.postcode):
+        raise HTTPException(
+            status_code=400,
+            detail="Please enter a valid postcode format."
+        )
+    
+    patient.postcode = postcode.format_valid_postcode(patient.postcode)
+
     patient_exists = crud.get_patient(patient.nhs_number)
     if patient_exists:
         raise HTTPException(
@@ -43,7 +52,15 @@ async def update_patient(patient: models.PatientUpdate):
     '''
     Update patient details.
     '''
-    
+
+    if patient.postcode is not None:
+        if not postcode.valid_postcode(patient.postcode):
+            raise HTTPException(
+                status_code=400,
+                detail="Please enter a valid postcode format."
+            )
+        patient.postcode = postcode.format_valid_postcode(patient.postcode)
+        
     patient_exists = crud.get_patient(patient.nhs_number)
     if patient_exists is None:
         raise HTTPException(
