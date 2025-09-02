@@ -2,6 +2,7 @@ from fastapi import APIRouter, HTTPException
 import datetime
 from app import crud, models
 from ...utils import postcode
+import nhs_number as nhs_number_util
 
 router = APIRouter(prefix="/patients", tags=["patients"])
 
@@ -15,7 +16,15 @@ async def get_patient(nhs_number):
     Retrieve patient by NHS Number.
     '''
 
-    patient = crud.get_patient(nhs_number)
+    if not nhs_number_util.is_valid(nhs_number):
+        raise HTTPException(
+            status_code=400,
+            detail="Please enter a valid NHS Number."
+        ) 
+
+    normalised_nhs_number = nhs_number_util.normalise_number(nhs_number)
+
+    patient = crud.get_patient(normalised_nhs_number)
     if patient is None:
         raise HTTPException(
             status_code=404,
@@ -29,6 +38,14 @@ async def create_patient(patient: models.PatientCreate):
     '''
     Create a new patient.
     '''
+
+    if not nhs_number_util.is_valid(patient.nhs_number):
+        raise HTTPException(
+            status_code=400,
+            detail="Please enter a valid NHS Number."
+        )
+
+    patient.nhs_number = nhs_number_util.normalise_number(patient.nhs_number)
 
     if not postcode.valid_postcode(patient.postcode):
         raise HTTPException(
@@ -53,6 +70,14 @@ async def update_patient(patient: models.PatientUpdate):
     Update patient details.
     '''
 
+    if not nhs_number_util.is_valid(patient.nhs_number):
+        raise HTTPException(
+            status_code=400,
+            detail="Please enter a valid NHS Number."
+        )
+    
+    patient.nhs_number = nhs_number_util.normalise_number(patient.nhs_number)
+
     if patient.postcode is not None:
         if not postcode.valid_postcode(patient.postcode):
             raise HTTPException(
@@ -76,7 +101,15 @@ async def delete_patient(nhs_number):
     Delete patient by NHS Number.
     '''
 
-    res = crud.delete_patient(nhs_number)
+    if not nhs_number_util.is_valid(nhs_number):
+        raise HTTPException(
+            status_code=400,
+            detail="Please enter a valid NHS Number."
+        ) 
+
+    normalised_nhs_number = nhs_number_util.normalise_number(nhs_number)    
+
+    res = crud.delete_patient(normalised_nhs_number)
 
     if res is None:
         raise HTTPException(
@@ -87,7 +120,7 @@ async def delete_patient(nhs_number):
     return res
 
 # TODO: refactor. This is a very rudimentary integration test.
-# An end-to-end test involving the frontend would be more valuable
+# An end-to-end test involving the frontend would be more valuable.
 @router.post("/intergration-test", response_model=models.Message)
 async def run_integration_test(patient: models.PatientCreate):
     '''
