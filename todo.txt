@@ -1,11 +1,11 @@
 Impl Routes Tests
 Impl CRUD Tests
-Integration test script
-Change .env file
 API Docs
 README
 
 Done:
+Integration test script
+Change .env file to .env.example
 NHS Number checksum
 Postcode validation
 Tests setup
