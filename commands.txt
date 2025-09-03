@@ -1,6 +1,3 @@
-Run backend container locally:
-docker run --name backend --rm -p 8000:8000 backend
-
 Run and shut down services locally via docker compose:
 docker compose up
 docker compose down

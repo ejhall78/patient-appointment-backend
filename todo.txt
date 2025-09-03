@@ -1,10 +1,13 @@
 TODO:
+Impl Appointment Routes & Tests 
+Impl Appointment CRUD & Tests 
 Impl Patient Routes Tests
 Impl Patient CRUD Tests
-README
-Write up
+Test harness
 
 Done:
+README
+Write up
 Integration test script
 Change .env file to .env.example
 NHS Number checksum
