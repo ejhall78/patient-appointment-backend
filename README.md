@@ -51,7 +51,14 @@ You can shutdown the service with the following command:
 docker compose down
 ```
 
-## Integration Test
+## Testing
+
+### Unit Tests
+There are currently a limited number of unit tests in the project with more being added in the near future. However, you can run the current unit tests simply with the following command:
+```
+pytest
+```
+### Integration Tests
 There is a rudimentary Integration Test script in the root directory that tests the CRUD functionality for the /patients end-points. This will be improved in the future to handle more cases as they are implemented. It could also be refactored to use a Makefile instead of a shell script. A full End-to-End test involving the frontend is also in scope for the future and would add a great amount of value.
 
 To run the Integration Test, simply run the following command:
