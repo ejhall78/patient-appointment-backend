@@ -11,5 +11,6 @@ TODO:
   - Docker + docker compose
 - Deployment instructions
   - Dependencies
+  - .env gotchya. create file and change in docker composes
   - Step-by-step
   - Run Integration Test Script
