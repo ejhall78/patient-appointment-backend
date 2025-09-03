@@ -1,7 +1,8 @@
-Impl Routes Tests
-Impl CRUD Tests
-API Docs
+TODO:
+Impl Patient Routes Tests
+Impl Patient CRUD Tests
 README
+Write up
 
 Done:
 Integration test script
