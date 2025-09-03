@@ -16,4 +16,9 @@ Start up dev server locally:
 fastapi dev main.py
 
 Login to postgres container:
+docker container ls
+**find container id for postgres db**
 docker exec -it **container id** psql -U postgres app
+
+Run Integration Test:
+bash run-integreation-test.sh
