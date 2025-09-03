@@ -1,0 +1,22 @@
+TODO:
+Impl Appointment Routes & Tests 
+Impl Appointment CRUD & Tests 
+Impl Patient Routes Tests
+Impl Patient CRUD Tests
+Test harness
+
+Done:
+README
+Write up
+Integration test script
+Change .env file to .env.example
+NHS Number checksum
+Postcode validation
+Tests setup
+Environment variables
+Impl Patient Routes
+Impl Patient CRUD
+Update Patient models
+Routes setup
+CRUD setup
+core/db setup

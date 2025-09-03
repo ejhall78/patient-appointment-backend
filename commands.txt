@@ -1,0 +1,18 @@
+Run and shut down services locally via docker compose:
+docker compose up
+docker compose down
+
+Run and rebuild services locally via docker compose:
+docker compose up --build
+
+Kill postgres if already running:
+sudo lsof -i :5432
+sudo kill **PID**
+
+Login to postgres container:
+docker container ls
+**find container id for postgres db**
+docker exec -it **container id** psql -U postgres app
+
+Run Integration Test:
+bash run-integration-test.sh
