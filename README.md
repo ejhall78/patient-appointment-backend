@@ -22,7 +22,6 @@ In the near future, CRUD functionality for patient appointments will be added.
 
 ### Step-by-step
 - Create your own .env file in the root directory based off of .env.example
-- Update the docker-compose files to refer to your .env file. (lines 10 & 23)
 - Run the following command in your terminal:
 ```
 docker compose up --build
@@ -36,10 +35,11 @@ sudo lsof -i :5432
 ```
 sudo kill **PID**
 ```
+### How to interact
 
 You should now see docker compose logging the build and creation process for the database and the backend containers.
 
-You can now head to http://localhost:8000/docs to interact with the backend service via a handy UI.
+You can head to http://localhost:8000/docs to interact with the backend service via a handy UI.
 
 **Tip**: checkout the *example-patients.json* file for some valid data.
 
@@ -52,7 +52,7 @@ docker compose down
 ```
 
 ## Integration Test
-There is a rudimentary Integration Test script in the root directory that tests the CRUD functionality for the /patients end-points. This will be improved in the future to handle more cases as they are implemented. It could also be refactored to use a Makefile instead of a shell script.
+There is a rudimentary Integration Test script in the root directory that tests the CRUD functionality for the /patients end-points. This will be improved in the future to handle more cases as they are implemented. It could also be refactored to use a Makefile instead of a shell script. A full End-to-End test involving the frontend is also in scope for the future and would add a great amount of value.
 
 To run the Integration Test, simply run the following command:
 ```
